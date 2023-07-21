@@ -1,0 +1,126 @@
+h2 {
+  border-bottom: 3px solid #6495ed;
+  font-family: 'Oswald', sans-serif; }
+
+h2, h3 {
+  margin-top: 25px; }
+
+.navbar {
+  font-family: 'Oswald', sans-serif; }
+  .navbar .navbar-brand {
+    font-weight: 400; }
+    .navbar .navbar-brand img {
+      width: auto;
+      max-height: 50px;
+      overflow: hidden; }
+  .navbar .navbar-nav {
+    font-weight: 300;
+    font-size: 25px; }
+    .navbar .navbar-nav .nav-item.active {
+      border-bottom: 3px solid #6495ed; }
+
+header {
+  position: relative; }
+
+.header-title {
+  font-family: 'Poiret One', cursive;
+  font-size: 50px;
+  color: white;
+  animation: fadeIn 3s forwards; }
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s forwards; }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+#second {
+  animation-delay: 2s; }
+
+#third {
+  animation-delay: 4s; }
+
+#fourth {
+  animation-delay: 6s; }
+
+.centered-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.round-borders {
+  border-radius: 50%; }
+
+body {
+  font-family: 'Roboto', sans-serif; }
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%; }
+  50% {
+    background-position: 100% 50%; }
+  100% {
+    background-position: 0% 50%; } }
+
+.intro {
+  margin-top: 55px; }
+  @media (min-width: 600px) {
+    .intro {
+      margin-top: 160px; } }
+  .intro .big-text-intro {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px; }
+  .intro .name-intro {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6495ed;
+    font-size: 23px;
+    font-weight: bold; }
+  .intro .sub-text-intro {
+    font-size: 30px;
+    font-weight: 300; }
+
+.card {
+  margin-bottom: 10px; }
+  .card .card-title {
+    font-size: 25px; }
+  .card .black-bg-transparent {
+    background: black;
+    opacity: 0.5;
+    position: absolute;
+    height: 100%;
+    width: 100%; }
+  .card:hover .black-bg-transparent {
+    opacity: 0.2; }
+  .card .card-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover; }
+  .card .card-img-top {
+    height: 350px;
+    object-fit: cover; }
+
+.hidden-link {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1; }
+
+.experience-section .job-title {
+  font-weight: bold;
+  font-size: 19px; }
+
+.experience-section .job-duration {
+  font-style: italic; }
+
+.big-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 60px; }
+
+.about-me {
+  font-size: 22px; }
