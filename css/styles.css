@@ -2,7 +2,8 @@ h2 {
   border-bottom: 3px solid #6495ed;
   font-family: 'Oswald', sans-serif; }
 
-h2, h3 {
+h2,
+h3 {
   margin-top: 25px; }
 
 .navbar {
@@ -126,4 +127,20 @@ body {
   font-size: 22px; }
 
 .projects-section .card-body {
-  padding: 6px; }
+  padding: 11px;
+  height: 436px; }
+
+.projects-section h3 {
+  font-weight: bold; }
+
+.projects-section .github-link {
+  background: #6495ed;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px; }
+
+.projects-section .live-site {
+  background: #029d53;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px; }

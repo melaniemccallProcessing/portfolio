@@ -1,27 +1,34 @@
 $light-blue : #6495ed;
-
+$green: #029d53;
 h2 {
     border-bottom: 3px solid $light-blue;
     font-family: 'Oswald', sans-serif;
 
 }
-h2, h3 {
-    margin-top:25px;
+
+h2,
+h3 {
+    margin-top: 25px;
 
 }
+
 .navbar {
     font-family: 'Oswald', sans-serif;
+
     .navbar-brand {
         font-weight: 400;
+
         img {
-            width:auto;
-            max-height:50px;
+            width: auto;
+            max-height: 50px;
             overflow: hidden;
         }
     }
+
     .navbar-nav {
         font-weight: 300;
-        font-size:25px;
+        font-size: 25px;
+
         .nav-item {
             &.active {
                 border-bottom: 3px solid #6495ed;
@@ -32,67 +39,84 @@ h2, h3 {
 
 
 header {
-    position:relative;
+    position: relative;
 }
+
 .header-title {
     font-family: 'Poiret One', cursive;
     font-size: 50px;
-    color:white;
+    color: white;
     animation: fadeIn 3s forwards;
 }
+
 .fade-in {
     opacity: 0;
     animation: fadeIn 2s forwards;
 }
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 #second {
     animation-delay: 2s;
 }
+
 #third {
     animation-delay: 4s;
 }
+
 #fourth {
     animation-delay: 6s;
 }
+
 .centered-text {
-    position:absolute;
+    position: absolute;
     top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
 .round-borders {
     border-radius: 50%;
 }
+
 body {
     font-family: 'Roboto', sans-serif;
 }
 
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .intro {
-    margin-top:55px;
+    margin-top: 55px;
 
     @media(min-width: 600px) {
         margin-top: 160px;
     }
+
     .big-text-intro {
         font-family: 'Playfair Display', serif;
         font-size: 60px;
     }
+
     .name-intro {
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -101,42 +125,49 @@ body {
         font-weight: bold;
 
     }
+
     .sub-text-intro {
         // font-family: 'Playfair Display', serif;
         font-size: 30px;
         // font-family: 'Oswald', sans-serif;
-        font-weight:300;
+        font-weight: 300;
     }
 }
 
 .card {
-    margin-bottom:10px;
+    margin-bottom: 10px;
+
     .card-title {
         font-size: 25px;
         // font-weight: 400;
     }
+
     .black-bg-transparent {
         background: black;
         opacity: 0.5;
         position: absolute;
-        height:100%;
-        width:100%;
+        height: 100%;
+        width: 100%;
     }
+
     &:hover {
         .black-bg-transparent {
             opacity: 0.2;
         }
     }
+
     .card-img {
         width: 100%;
-        height:350px;
+        height: 350px;
         object-fit: cover;
     }
+
     .card-img-top {
-        height:350px;
+        height: 350px;
         object-fit: cover;
     }
 }
+
 .hidden-link {
     position: absolute;
     height: 100%;
@@ -146,9 +177,10 @@ body {
 
 .experience-section {
     .job-title {
-    font-weight: bold;
-    font-size: 19px;
+        font-weight: bold;
+        font-size: 19px;
     }
+
     .job-duration {
         font-style: italic;
     }
@@ -162,8 +194,27 @@ body {
 .about-me {
     font-size: 22px;
 }
+
 .projects-section {
     .card-body {
-        padding: 6px;
+        padding: 11px;
+        height: 436px;
+    }
+
+    h3 {
+        font-weight: bold;
+    }
+
+    .github-link {
+        background: $light-blue;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 3px;
+    }
+    .live-site {
+        background: $green;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 3px;
     }
 }
