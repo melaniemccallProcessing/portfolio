@@ -1,9 +1,11 @@
 $light-blue : #6495ed;
 $green: #029d53;
+$font-body: 'Oswald', sans-serif;
+$font-title: 'Playfair Display', serif;
+
 h2 {
     border-bottom: 3px solid $light-blue;
-    font-family: 'Oswald', sans-serif;
-
+    font-family: $font-body;
 }
 
 h2,
@@ -13,7 +15,7 @@ h3 {
 }
 
 .navbar {
-    font-family: 'Oswald', sans-serif;
+    font-family: $font-body;
 
     .navbar-brand {
         font-weight: 400;
@@ -113,7 +115,7 @@ body {
     }
 
     .big-text-intro {
-        font-family: 'Playfair Display', serif;
+        font-family: $font-title;
         font-size: 60px;
     }
 
@@ -187,12 +189,21 @@ body {
 }
 
 .big-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 60px;
+    font-family: $font-title;
+    font-size: 50px;
 }
 
 .about-me {
     font-size: 22px;
+
+    img {
+        border-radius: 7px;
+    }
+
+    .quote {
+        font-family: $font-title;
+        font-size: 30px;
+    }
 }
 
 .projects-section {
