@@ -6,6 +6,7 @@ $font-title: 'Playfair Display', serif;
 h2 {
     border-bottom: 3px solid $light-blue;
     font-family: $font-body;
+    width: fit-content;
 }
 
 h2,
@@ -14,6 +15,9 @@ h3 {
 
 }
 
+p {
+    font-size: 20px;
+}
 .navbar {
     font-family: $font-body;
 
@@ -67,15 +71,15 @@ header {
 }
 
 #second {
-    animation-delay: 2s;
+    animation-delay: 1s;
 }
 
 #third {
-    animation-delay: 4s;
+    animation-delay: 2s;
 }
 
 #fourth {
-    animation-delay: 6s;
+    animation-delay: 3s;
 }
 
 .centered-text {
@@ -116,7 +120,7 @@ body {
 
     .big-text-intro {
         font-family: $font-title;
-        font-size: 60px;
+        font-size: 45px;
     }
 
     .name-intro {
@@ -141,12 +145,12 @@ body {
 
     .card-title {
         font-size: 25px;
-        // font-weight: 400;
+        font-weight: bold;
     }
 
     .black-bg-transparent {
         background: black;
-        opacity: 0.5;
+        opacity: 0.7;
         position: absolute;
         height: 100%;
         width: 100%;

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="img/ramen.png">
+
+    <!--build:css css/main.css-->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <!--endbuild-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Oswald:wght@300;400&family=Playfair+Display&family=Poiret+One&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
+    <title>Melanie McCall Diaz</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/"><img src="img/profile-pic.png" class="img-fluid round-borders"> Melanie
+                McCall Diaz</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resume.html">Resume</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container fade-in">
+        <div class="row pt-5">
+            <div class="col-sm-10">
+                <h1>Order Fulfillment & Inventory Automation App</h1>
+                <p> <b>Stack:</b> Node.js · Shopify Admin API · XML APIs · Axios · Nodemailer · Heroku Scheduler</p>
+                <p><b>Year:</b> 2019 (Refactored 2025)</p>
+                <a class="btn btn-primary" href="https://github.com/melaniemccallProcessing/shopify-fulfillment-automation" target="_blank"
+                    rel="noopener noreferrer">View Project on Github</a>
+                <h2>Overview</h2>
+
+                <p>I built an automation system that connects a Shopify store to a legacy third-party dropshipper that
+                    had no native Shopify integration. The system handles order submission, shipment tracking, partial
+                    cancellations, refunds, and inventory synchronization — without manual intervention.
+
+                    This project powered a real e-commerce business and ran on a schedule, quietly doing its job while
+                    everyone else slept.</p>
+
+                <h2>The Problem</h2>
+                <p>
+                    The business relied on a dropshipper that only supported XML-based APIs and offered no real-time
+                    webhooks. Orders were being processed manually, inventory frequently went out of sync, and partial
+                    shipments caused confusion for both customers and staff.
+
+                    In short:</p>
+                <ul>
+                    <li>Orders needed to flow from Shopify → vendor automatically</li>
+
+                    <li>Inventory needed to stay accurate across thousands of SKUs</li>
+
+                    <li>Partial shipments and cancellations had to be handled safely</li>
+
+                    <li>Customers needed clear communication when items were unavailable</li>
+
+                    <li>Doing this manually did not scale.</li>
+                </ul>
+
+                <h2>Constraints & Challenges</h2>
+                <p>
+
+                    This was not a clean, modern REST-only environment.
+
+                    Key constraints included:</p>
+                <ul>
+                    <li>A legacy XML API with inconsistent responses</li>
+
+                    <li>No real-time fulfillment notifications</li>
+
+                    <li>Partial shipments requiring refunds and custom logic</li>
+
+                    <li>Payment capture timing (authorized vs paid orders)</li>
+
+                    <li>Avoiding double fulfillment or incorrect refunds</li>
+
+                    <li>Running scheduled jobs reliably without human oversight</li>
+                </ul>
+
+                The solution had to be defensive, predictable, and idempotent.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <img class="w-100" src="img/ofi-diagram.png">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <h2>The Solution</h2>
+                <p>I designed the system as three independent processes:</p>
+                <ol>
+                    <li>Order Webhook Handler:<br>
+                        When a customer places an order:<br>
+                        <ul>
+                            <li>Shopify sends a webhook</li>
+
+                            <li>The order is transformed into XML</li>
+
+                            <li>The order is sent to the dropshipper</li>
+
+                            <li>The Shopify order is tagged with a vendor order ID for tracking</li>
+                        </ul>
+                    </li>
+                    <li>Order Status Worker (Hourly):<br>
+                        <ul>
+                            <li>Polls the dropshipper for shipment status</li>
+
+                            <li>Automatically fulfills shipped orders in Shopify</li>
+
+                            <li>Captures payment when appropriate</li>
+
+                            <li>Handles partial shipments with refunds and customer notifications</li>
+
+                            <li>Emails internal summaries for visibility</li>
+                        </ul>
+                    </li>
+                    <li>Inventory Sync Worker (Hourly)<br>
+                        <ul>
+                            <li>Downloads the vendor's full inventory feed</li>
+
+                            <li>Updates product availability and tags in Shopify</li>
+
+                            <li>Creates new products when appropriate</li>
+
+                            <li>Unpublishes discontinued items</li>
+
+                            <li>Maintains Shopify as a clean storefront backed by vendor data</li>
+                        </ul>
+                        Each process could run independently and recover gracefully from failures.
+                    </li>
+                </ol>
+                <h2>Key Technical Decisions</h2>
+                <ul>
+                    <li>Scheduled workers instead of real-time polling to accommodate a vendor without webhooks</li>
+
+                    <li>Order tagging to reliably link Shopify orders to vendor records</li>
+
+                    <li>Source-of-truth inventory model, treating the vendor feed as authoritative</li>
+
+                    <li>Email summaries instead of dashboards for lightweight monitoring and updates to business
+                        owners</li>
+
+                    <li>Fail-safe defaults for partial shipments and cancellations</li>
+
+                </ul>
+                <h2>Results & Impact</h2>
+
+                <ul>
+                    <li>Eliminated manual order processing</li>
+
+                    <li>Reduced inventory mismatches and overselling</li>
+
+                    <li>Automated refunds and customer notifications</li>
+
+                    <li>Allowed the business to scale without additional staff</li>
+
+                    <li>System ran unattended on a schedule with minimal maintenance</li>
+                </ul>
+                <a class=" btn btn-primary pb-5" href="https://github.com/melaniemccallProcessing/shopify-fulfillment-automation" target="_blank"
+                    rel="noopener noreferrer">View Project on Github</a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <!--build:js js/main.js-->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--endbuild-->
+</body>
+
+</html>
